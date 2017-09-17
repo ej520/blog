@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	//	"github.com/Unknwon/com"
+	"ej520.com/blog/com"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -67,7 +67,7 @@ func RegisterDB() {
 	// 注册模型
 	orm.RegisterModel(new(Category), new(Topic), new(Comment))
 	// 注册驱动（“sqlite3” 属于默认注册，此处代码可省略）
-	orm.RegisterDriver(_SQLITE3_DRIVER, orm.DR_Sqlite)
+	orm.RegisterDriver(_SQLITE3_DRIVER, orm.DRSqlite)
 	// 注册默认数据库
 	orm.RegisterDataBase("default", _SQLITE3_DRIVER, _DB_NAME, 10)
 }

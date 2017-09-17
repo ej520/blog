@@ -15,7 +15,7 @@ type TopicController struct {
 
 func (this *TopicController) Get() {
 	this.Data["IsTopic"] = true
-	this.TplNames = "topic.html"
+	this.TplName = "topic.html"
 	this.Data["IsLogin"] = checkAccount(this.Ctx)
 
 	topics, err := models.GetAllTopics("", "", false)
@@ -74,7 +74,7 @@ func (this *TopicController) Add() {
 		return
 	}
 
-	this.TplNames = "topic_add.html"
+	this.TplName = "topic_add.html"
 	this.Data["IsLogin"] = true
 }
 
@@ -97,7 +97,7 @@ func (this *TopicController) Modify() {
 		this.Redirect("/login", 302)
 		return
 	}
-	this.TplNames = "topic_modify.html"
+	this.TplName = "topic_modify.html"
 
 	tid := this.Input().Get("tid")
 	topic, err := models.GetTopic(tid)
@@ -112,7 +112,7 @@ func (this *TopicController) Modify() {
 }
 
 func (this *TopicController) View() {
-	this.TplNames = "topic_view.html"
+	this.TplName = "topic_view.html"
 
 	reqUrl := this.Ctx.Request.RequestURI
 	i := strings.LastIndex(reqUrl, "/")
